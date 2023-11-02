@@ -6,11 +6,11 @@ categories: [Nim语言, 博客翻译]
 tags: [Nim语言, 编译优化]
 ---
 
-[最近](http://forum.nim-lang.org/t/1171)，[Nim](http://nim-lang.org/)编程语言二进制文件的大小似乎[成了一个](https://www.schipplock.software/p/static-linking-with-nim.html) [热门话题](http://forum.nim-lang.org/t/963)。Nim 的口号是“ **表现力强、高效、优雅** ” ，因此让我们在这篇文章中探讨**高效**的部分，探索几种在Linux上缩小简单的Nim`Hello World`二进制文件大小的方法。在此过程中，我们将：
+[最近](https://forum.nim-lang.org/t/1171)，[Nim](https://nim-lang.org/)编程语言二进制文件的大小似乎[成了一个](https://www.schipplock.software/p/static-linking-with-nim.html) [热门话题](https://forum.nim-lang.org/t/963)。Nim 的口号是“ **表现力强、高效、优雅** ” ，因此让我们在这篇文章中探讨**高效**的部分，探索几种在Linux上缩小简单的Nim`Hello World`二进制文件大小的方法。在此过程中，我们将：
 
 -   将常规程序编译成6KB二进制文件
 -   不考虑C标准库，构建952字节的二进制文件
--   使用自定义链接器脚本和ELF头文件构建150字节的二进制文件[（比Rust小1个字节）](http://mainisusuallyafunction.blogspot.de/2015/01/151-byte-static-linux-binary-in-rust.html)
+-   使用自定义链接器脚本和ELF头文件构建150字节的二进制文件[（比Rust小1个字节）](https://mainisusuallyafunction.blogspot.de/2015/01/151-byte-static-linux-binary-in-rust.html)
 
 本文章的完整源代码可在[其资源库](https://github.com/def-/nim-binary-size)中找到。所有测试均在Linux x86-64上进行，使用GCC 5.1和Clang 3.6.0。
 
@@ -151,7 +151,7 @@ $ strip -s hello
 
 ## [自定义链接以实现150字节](https://hookrace.net/blog/nim-binary-size/#custom-linking-to-achieve-150-bytes)
 
-这与[Rust](http://mainisusuallyafunction.blogspot.de/2015/01/151-byte-static-linux-binary-in-rust.html)博文中 151 字节的 Linux 静态二进制文件使用的方法完全相同，只不过使用GCC的Nim能多压缩1个字节。同时，Clang需要比Rust版本多1个字节。
+这与[Rust](https://mainisusuallyafunction.blogspot.de/2015/01/151-byte-static-linux-binary-in-rust.html)博文中 151 字节的 Linux 静态二进制文件使用的方法完全相同，只不过使用GCC的Nim能多压缩1个字节。同时，Clang需要比Rust版本多1个字节。
 
 我们继续执行刚才缩减到952字节的程序。但我们并不是让Nim来完成所有工作（现在已经有很多选项了），而是简单地从Nim创建一个对象文件（`--app:staticlib`），然后从这里开始手动操作。一个[自定义链接器脚本](https://github.com/def-/nim-binary-size/blob/master/script.ld)和一个[自定义ELF头文件](https://github.com/def-/nim-binary-size/blob/master/elf.s)完成了主要工作。但实际执行的代码仍完全由我们的 Nim 代码提供：
 
@@ -185,7 +185,7 @@ $ ./hello
 Hello!
 ```
 
-150 字节！这就是我们要得到的最终大小。如果你还是觉得不够，想手动编写二进制文件，你可以使用更多的方法来减小到45字节，如《[Whirlwind Tutorial on Creating Really Teensy ELF Executables for Linux](http://www.muppetlabs.com/%7Ebreadbox/software/tiny/teensy.html)》（关于为Linux创建真正的Teensy ELF可执行文件的出色教程）中所述。
+150 字节！这就是我们要得到的最终大小。如果你还是觉得不够，想手动编写二进制文件，你可以使用更多的方法来减小到45字节，如《[Whirlwind Tutorial on Creating Really Teensy ELF Executables for Linux](https://www.muppetlabs.com/%7Ebreadbox/software/tiny/teensy.html)》（关于为Linux创建真正的Teensy ELF可执行文件的出色教程）中所述。
 
 ## [总结](https://hookrace.net/blog/nim-binary-size/#summary)
 
