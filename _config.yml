@@ -16,10 +16,10 @@ timezone: Asia/Shanghai
 
 title: Kernel-Zhang的个人主页 # the main title
 
-tagline: 出于个人兴趣和爱好开发的主页，主要用于技术分享 # it will display as the sub-title
+tagline: 出于个人兴趣和爱好开发的主页，欢迎大家访问。 # the tagline below the title
 
 description: >- # used by seo meta and the atom feed
-  目前主要分享一些Nim语言的学习笔记，以及一些内核模块开发的技术文章，欢迎大家访问我的主页，一起学习，一起进步。
+  不积跬步，无以至千里，不积小流，无以成江河。骐骥一跃，不能十步，驽马十驾，功在不舍。
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
