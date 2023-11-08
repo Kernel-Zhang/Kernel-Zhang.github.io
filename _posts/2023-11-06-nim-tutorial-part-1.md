@@ -45,7 +45,7 @@ echo "Hi, ", name, "!"
 nim compile --run greetings.nim
 ```
 
-使用“--run”[参数](https://nim-lang.org/docs/nimc.html#compiler-usage-commandminusline-switches)，Nim会在编译后自动执行文件。您可以在文件名后添加命令行参数，为程序提供命令行参数：
+使用`--run`[参数](https://nim-lang.org/docs/nimc.html#compiler-usage-commandminusline-switches)，Nim会在编译后自动执行文件。您可以在文件名后添加命令行参数，为程序提供命令行参数：
 
 ```shell
 nim compile --run greetings.nim arg1 arg2
@@ -249,7 +249,7 @@ of 3, 8: echo "The number is 3 or 8"
 else: discard
 ```
 
-空的[discard语句](https://nim-lang.org/docs/tut1.html#procedures-discard-statement)是*什么都不做的*语句。编译器知道，带有`else`部分的`case`语句不会失败，因此错误也就消失了。请注意，不可能涵盖所有可能的字符串值：这就是字符串案例总是需要`else`分支的原因。
+空的[discard语句](https://nim-lang.org/docs/tut1.html#procedures-discard-statement)是*什么都不做的*语句。编译器知道，带有`else`部分的`case`语句不会失败，因此错误也就消失了。请注意，不可能涵盖所有可能的字符串值：这就是字符串作为`case`条件总是需要`else`分支的原因。
 
 一般情况下，case 语句用于子范围类型或枚举类型，因为编译器会检查是否涵盖了任何可能的值。
 
@@ -269,7 +269,7 @@ while name == "":
 
 ### [for语句](https://nim-lang.org/docs/tut1.html#control-flow-statements-for-statement)
 
-for语句是一种对*迭代器*提供的任何元素进行循环的结构。本示例使用内置的[countup](https://nim-lang.org/docs/system.html#countup.i,T,T,Positive)枚举器：
+for语句是一种对*迭代器*提供的任何元素进行循环的结构。本示例使用内置的[countup](https://nim-lang.org/docs/system.html#countup.i,T,T,Positive)迭代器：
 
 ```nim
 echo "Counting to ten: "
@@ -291,7 +291,12 @@ while i <= 10:
 
 由于程序中经常出现“向上计数”的情况，因此Nim也有一个[..](https://nim-lang.org/docs/system.html#...i,T,T)迭代器来做同样的事情：
 
-倒计时也很容易实现（但不太需要）：
+```nim
+for i in 1 .. 10:
+  ...
+```
+
+倒计时也很容易实现（但不太常用）：
 
 ```nim
 echo "Counting down from 10 to 1: "
@@ -468,13 +473,13 @@ else:
   echo "I think you know what the problem is just as well as I do."
 ```
 
-这个示例显示了一个名为yes的过程，该过程向用户提问，如果用户回答 “是”（或类似答案），则返回`true`；如果用户回答 “否”（或类似答案），则返回`false`。返回语句会立即退出过程（因此也退出`while`循环）。`(question: string): bool`语法说明过程需要一个名为`question`的字符串类型参数，并返回一个`bool`类型的值。`bool`类型是内置的：`bool`的唯一有效值是`true`和`false`。`if`或`while` 语句中的条件必须是`bool`类型。
+这个示例显示了一个名为yes的过程，该过程向用户提问，如果用户回答 “是”（或类似答案），则返回`true`；如果用户回答 “否”（或类似答案），则返回`false`。返回语句会立即退出过程（因此也退出`while`循环）。`(question: string): bool`语法说明过程需要一个名为`question`的字符串类型参数，并返回一个`bool`类型的值。`bool`类型是内置的：`bool`的只有两种有效值`true`和`false`。`if`或`while` 语句中的条件必须是`bool`类型。
 
 一些术语：在示例中，`question`被称为（形式）*参数*，`"Should I..."`被称为传递给该参数的*实参*。
 
 ### [result变量](https://nim-lang.org/docs/tut1.html#procedures-result-variable)
 
-一个带返回值的过程会声明一个隐式`result`变量来表示返回值。`return`是`return result`的简称（并不是返回值为空的意思）。如果过程的没有`return`语句，那么在过程结束时总是自动返回`result`值。
+一个带返回值的过程会声明一个隐式`result`变量来表示返回值。`return`是`return result`的简称（译者：并不是返回值为空的意思）。如果过程的没有`return`语句，那么在过程结束时总是自动返回`result`值。
 
 ```nim
 proc sumTillNegative(x: varargs[int]): int =
@@ -1490,6 +1495,6 @@ m.x()         # m is aliasing mymodule
 include fileA, fileB, fileC
 ```
 
-## [结束](https://nim-lang.org/docs/tut1.html#part-2)
+## [第二部分](https://nim-lang.org/docs/tut1.html#part-2)
 
-基础知识学完了，现在让我们看看Nim除了提供基础的漂亮语法外，还能提供什么：[第二部分](https://nim-lang.org/docs/tut2.html)
+基础知识学完了，现在让我们看看Nim除了提供基础的漂亮语法外，还能提供什么：[第二部分](../nim-tutorial-part-2)
