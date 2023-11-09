@@ -3,7 +3,7 @@ title: Nim官方教程第二部分
 author: kernel
 date: 2023-11-07 12:34:00 +0800
 categories: [Nim语言, 官方教程]
-tags: [Nim语言, 官方教程, Nim入门]
+tags: [Nim语言, Nim官方教程, Nim入门]
 ---
 
 | 条目        | 内容说明          |

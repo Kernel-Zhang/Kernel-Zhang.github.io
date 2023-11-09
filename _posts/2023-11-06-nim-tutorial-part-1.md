@@ -3,7 +3,7 @@ title: Nim官方教程第一部分
 author: kernel
 date: 2023-11-06 12:34:00 +0800
 categories: [Nim语言, 官方教程]
-tags: [Nim语言, 官方教程, Nim入门]
+tags: [Nim语言, Nim官方教程, Nim入门]
 ---
 
 | 条目        | 内容说明          |
@@ -22,7 +22,7 @@ tags: [Nim语言, 官方教程, Nim入门]
 
 这里还有其他一些学习Nim的资源：
 
--   [Nim基础教程](https://narimiran.github.io/nim-basics/)：对上述概念的基本介绍
+-   [Nim基础教程](https://narimiran.github.io/nim-basics/)：对上述概念的基本介绍（[已翻译](../Nim-basic/)）
 -   [5分钟学会Nim](https://learnxinyminutes.com/docs/nim/)：5分钟快速入门Nim
 -   [Nim手册](https://nim-lang.org/docs/manual.html)： 里面有更多的高级语言功能示例
 
@@ -537,7 +537,7 @@ echo y
 discard yes("May I ask a pointless question?")
 ```
 
-如果被调用的proc/iterator已用discardablepragma声明，则返回值可以隐式忽略：
+如果被调用的proc/iterator已用discardable语义声明，则返回值可以隐式忽略：
 
 ```nim
 proc p(x, y: int): int {.discardable.} =
@@ -663,11 +663,11 @@ proc even(n: int): bool =
 
 ### [函数和方法](https://nim-lang.org/docs/tut1.html#procedures-funcs-and-methods)
 
-正如介绍中提到的，Nim区分了过程、函数和方法，分别由proc、func 和method关键字定义。在某些方面，Nim的定义比其他语言更迂腐。
+正如介绍中提到的，Nim区分了过程、函数和方法，分别由proc、func 和method关键字定义。在某些方面，Nim的定义比其他语言更保守。
 
-函数更接近于纯数学函数的概念，如果你曾经学习过函数式编程，可能会对它比较熟悉。从本质上讲，函数是带有额外限制的过程：不能访问全局状态（const除外），不能产生副作用。func关键字基本上是带有`{.noSideEffects.}`标记的proc的别名。不过，函数仍可更改其可变参数，即标记为var的参数以及任何ref对象。
+函数更接近于纯数学函数的概念，如果你曾经学习过函数式编程，可能会对它比较熟悉。从本质上讲，函数是带有额外限制的过程：不能访问全局状态（const除外），不能产生副作用。func关键字基本上是带有`{.noSideEffects.}`标记的过程别名。不过，函数仍可更改其可变参数，即标记为var的参数以及任何ref对象。
 
-与过程不同，方法是动态派发的。这听起来有点复杂，但它是一个与继承和面向对象编程密切相关的概念。如果重载一个过程（两个名称相同但类型不同或参数集不同的过程被称为重载），那么使用哪个过程将在编译时确定。另一方面，方法依赖于继承自RootObj的对象。[本教程的第二部分](https://nim-lang.org/docs/tut2.html#object-oriented-programming-dynamic-dispatch)将更深入地介绍这一点。
+与过程不同，方法是动态派发的。这听起来有点复杂，但它是一个与继承和面向对象编程密切相关的概念。如果重载一个过程（两个名称相同但类型不同或参数集不同的过程被称为重载），那么使用哪个过程将在编译时确定。另一方面，方法依赖于继承自RootObj的对象。[本教程的第二部分](../nim-tutorial-part-2#object-oriented-programming-dynamic-dispatch)将更深入地介绍这一点。
 
 ## [迭代器](https://nim-lang.org/docs/tut1.html#iterators)
 
@@ -689,7 +689,7 @@ proc countup(a, b: int): int =
     inc(res)
 ```
 
-然而，这样做是行不通的。问题在于过程不仅要返回，而且要在迭代结束后**返回并继续**。这种返回和继续被称为yield语句。现在唯一要做的就是用`iterator`替换`proc`关键字，这就是我们的第一个迭代器：
+然而，这样做是行不通的。问题在于所需要的过程不仅要返回迭代值，而且要在迭代值返回后**能够继续**。这种返回和继续被称为`yield`语句。现在唯一要做的就是用`iterator`替换`proc`关键字，这就是我们的第一个迭代器：
 
 ```nim
 iterator countup(a, b: int): int =
@@ -729,7 +729,7 @@ while p != nil and p.name != "xyz":
 
 *字符类型*称为char。它的大小总是一个字节，因此不能表示大多数UTF-8字符，但可以表示组成多字节 UTF-8字符的一个字节。这样做的原因是为了提高效率：在绝大多数使用情况下，生成的程序仍能正确处理 UTF-8，因为UTF-8是专门为此而设计的。字符字面量用单引号括起来。
 
-字符可以用\==、<、 <=、\>、\> \= 操作符进行比较。操作符$可以将字符转换为字符串。字符不能与整数混合；要获取字符的序号值，请使用ord过程。从整数到字符的转换使用chr过程。
+字符可以用\==、<、 <=、\>、\> \= 操作符进行比较。操作符$可以将字符转换为字符串。字符不能与整数混合；要获取字符的序号值，请使用`ord`过程。从整数到字符的转换使用`chr`过程。
 
 ### [字符串类型](https://nim-lang.org/docs/tut1.html#basic-types-strings)
 
@@ -737,9 +737,9 @@ while p != nil and p.name != "xyz":
 
 字符串的赋值运算符会复制字符串。您可以使用&操作符连接字符串，使用add操作符追加字符串。
 
-字符串比较使用的是它们的词典顺序。支持所有比较运算符。按照惯例，所有字符串都采用UTF-8编码，但并不强制执行。例如，从二进制文件读取字符串时，字符串只是字节序列。索引操作`s[i] `表示s的第i个*字符*，而不是第i个`unichar`。
+字符串比较使用的是它们的词典顺序。支持所有比较运算符。按照惯例，所有字符串都采用UTF-8编码，但并不强制执行。例如，从二进制文件读取字符串时，字符串只是字节序列。索引操作`s[i]`表示s的第i个*字符*，而不是第i个`unichar`。
 
-字符串变量的初始化值为空字符串""。
+字符串变量的初始化值为空字符串`""`。
 
 ### [整型](https://nim-lang.org/docs/tut1.html#basic-types-integers)
 
@@ -881,7 +881,7 @@ type
 
 MySubrange是int的子范围，只能容纳 0 至 5 的值。向MySubrange类型的变量赋值任何其他值都会导致编译时或运行时错误。允许从基本类型向子范围类型赋值（反之亦然）。
 
-系统模块将重要的[Natural](https://nim-lang.org/docs/system.html#Natural)类型定义为`range[0..high(int)]`（[high](https://nim-lang.org/docs/system.html#high,typedesc[T])返回最大值）。其他编程语言可能会建议使用无符号整数来表示自然数。这通常是**不明智的**：你不会因为数字不能是负数就不希望使用无符号运算（回绕运算）。Nim的Natural类型有助于避免这种常见的编程错误。
+系统模块将重要的[Natural](https://nim-lang.org/docs/system.html#Natural)类型定义为`range[0..high(int)]`（[high](https://nim-lang.org/docs/system.html#high,typedesc[T])返回最大值）。其他编程语言可能会建议使用无符号整数来表示自然数。这通常是**不明智的**：你会因为数字是无符号类型就采用了不希望的无符号运算（回绕运算）。Nim的Natural类型有助于避免这种常见的编程错误。
 
 ### [集合](https://nim-lang.org/docs/tut1.html#advanced-types-sets)
 
@@ -1092,7 +1092,7 @@ for i, value in @[3, 4, 5]:
 
 **注意**：`openArray`（开放数组）只能用于参数。
 
-固定大小的数组往往不够灵活，程序应能处理不同大小的数组。openarray类型可以做到这一点。开放数组的索引总是从位置 0 开始的int。[len](https://nim-lang.org/docs/system.html#len,TOpenArray)、[low](https://nim-lang.org/docs/system.html#low,openArray[T])和[high](https://nim-lang.org/docs/system.html#high,openArray[T])操作也适用于开放数组。任何具有兼容基本类型的数组都可以传递给 openarray参数，索引类型并不重要。
+固定大小的数组往往不够灵活，程序应能处理不同大小的数组。openarray类型可以做到这一点。开放数组的索引总是从位置0开始的int。[len](https://nim-lang.org/docs/system.html#len,TOpenArray)、[low](https://nim-lang.org/docs/system.html#low,openArray[T])和[high](https://nim-lang.org/docs/system.html#high,openArray[T])操作也适用于开放数组。任何具有兼容基本类型的数组都可以传递给 openarray参数，索引类型并不重要。
 
 ```nim
 var
