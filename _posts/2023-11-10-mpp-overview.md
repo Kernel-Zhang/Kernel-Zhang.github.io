@@ -55,7 +55,7 @@ cmake -DRKPLATFORM=ON -DHAVE_DRM=ON && make
 ```
                 +---------------------------------------+
                 |                                       |
-                | OpenMax  / libva                      |
+                | ffmpeg / OpenMax / gstreamer / libva  |
                 |                                       |
                 +---------------------------------------+
 
@@ -78,7 +78,7 @@ cmake -DRKPLATFORM=ON -DHAVE_DRM=ON && make
             |   +-----------+ +-----------+    |        |   |
             |   |           | |           |    |        |   |
             |   |  parser   | |    HAL    |    |        |   |
-            |   |  control  | |  reg_gen  |    |        |   |
+            |   |  recoder  | |  reg_gen  |    |        |   |
             |   |           | |           |    |        |   |
             |   +-----------+ +-----------+    +--------|   |
             |                                               |
@@ -90,7 +90,6 @@ cmake -DRKPLATFORM=ON -DHAVE_DRM=ON && make
                 |       RK vcodec_service / v4l2        |
                 |                                       |
                 +---------------------------------------+
-
 ```
 
 ## 关于Mpp
