@@ -2,7 +2,7 @@
 title: Vala教程
 author: kernel
 date: 2023-11-20 12:34:00 +0800
-categories: [Vala语言, 官方教程]
+categories: [Vala语言, 教程]
 tags: [Vala语言, Vala官方教程, Vala入门]
 ---
 
