@@ -14,7 +14,7 @@ order: 4
 
 # 内容和主题
 
-感兴趣的编程语言：C、C++、Nim和rust
+感兴趣的编程语言：C、C++、Nim、Vala和Rust等底层编程语言。
 
 最喜欢的多媒体框架：Gstreamer
 
