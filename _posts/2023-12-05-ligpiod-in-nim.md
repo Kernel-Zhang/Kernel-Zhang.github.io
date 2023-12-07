@@ -2,7 +2,7 @@
 title: libgpiod在Nim中的使用
 author: kernel
 date: 2023-12-05 14:14:00 +0800
-categories: [原创, Nim语言]
+categories: [原创, Nim]
 tags: [Nim语言, 语言交互, Nim入门]
 ---
 
