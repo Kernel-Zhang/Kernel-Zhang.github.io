@@ -1,5 +1,5 @@
 ---
-title: gstreamer插件编写指南：能力集协商
+title: gstreamer插件编写指南：内存分配
 author: kernel
 date: 2023-11-15 12:29:00 +0800
 categories: [gstreamer, 插件编写]
