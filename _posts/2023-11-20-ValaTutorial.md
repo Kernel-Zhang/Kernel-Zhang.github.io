@@ -2686,7 +2686,7 @@ void main () {
 
 您必须使用`gio-2.0`软件包编译此示例：
 
-```vala
+```shell
 valac --pkg gio-2.0 dbus-demo-service.vala
 ./dbus-demo-service
 ```
