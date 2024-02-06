@@ -91,7 +91,7 @@ GST_ELEMENT_REGISTER_DEFINE(my_filter, "my-filter", GST_RANK_NONE, GST_TYPE_MY_F
 
 -   抓取视频汇元素将要呈现的窗口。要做到这一点，要么需要了解视频汇元素生成的窗口标识符，要么需要强制视频汇元素使用特定的窗口标识符进行呈现。
     
--   强制重新绘制窗口上显示的最新视频帧。事实上，如果`GstPipeline`处于`GST_STATE_PAUSED`状态，移动 Window 会损坏其内容。应用程序开发人员需要自行处理 Expose 事件，并强制视频汇元素刷新窗口内容。
+-   强制重新绘制窗口上显示的最新视频帧。事实上，如果`GstPipeline`处于`GST_STATE_PAUSED`状态，移动窗口会损坏其内容。应用程序开发人员需要自行处理 Expose 事件，并强制视频汇元素刷新窗口内容。
 
 在视频窗口中绘制视频输出的插件需要在某个阶段拥有该窗口。简单地说，被动模式就是在该阶段之前没有给插件提供窗口，所以插件自己创建了窗口。在这种情况下，插件有责任在不再需要该窗口时将其销毁，并且必须告诉应用程序已经创建了一个窗口，以便应用程序可以使用它。插件可以通过`gst_video_overlay_got_window_handle`方法发布`have-window-handle`消息。
 

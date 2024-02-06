@@ -83,7 +83,7 @@ void main () {
 
 ![refcycle3.png](/assets/img/2023-11-23/refcycle3.png "refcycle3.png")
 
-## 非拥有主引用
+## 非拥有引用
 
 Vala 类的所有对象和基于 gobject 库的大多数对象都有引用计数。不过，Vala 也允许您使用默认不支持引用计数的非基于对象的 C 库类。这些类称为紧凑类（用`[Compact]`属性注释）。
 

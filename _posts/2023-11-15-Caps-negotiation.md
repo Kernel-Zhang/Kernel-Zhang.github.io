@@ -267,7 +267,7 @@ gst_my_filter_chain (GstPad    *pad,
 
 这里需要注意的是，不同的元素在这里实际上承担着不同的责任：
 
--   想要向上游提出新格式的要素需要首先通过` ACCEPT_CAPS` 查询检查上游是否接受新的能力集。然后发送 RECONFIGURE 事件，并准备好用新的首选格式回答 CAPS 查询。需要注意的是，如果没有上游元素能够（或愿意）重新协商，元素就需要使用当前配置的格式。
+-   想要向上游提出新格式的元素需要首先通过` ACCEPT_CAPS` 查询检查上游是否接受新的能力集。然后发送 RECONFIGURE 事件，并准备好用新的首选格式回答 CAPS 查询。需要注意的是，如果没有上游元素能够（或愿意）重新协商，元素就需要使用当前配置的格式。
     
 -   根据“转换协商”（Transform negotiation）进行转换协商的元素会向上游发送 RECONFIGURE 事件。由于这些元素只是根据上游能力集进行固定变换，因此它们需要向上游发送事件，以便选择新格式。
     
@@ -287,7 +287,7 @@ gst_my_filter_query (GstPad *pad, GstObject * parent, GstQuery * query)
   GstMyFilter *filter = GST_MY_FILTER (parent);
 
   switch (GST_QUERY_TYPE (query)) {
-    case GST_QUERY_CAPS
+    case GST_QUERY_CAPS:
     {
       GstPad *otherpad;
       GstCaps *temp, *caps, *filt, *tcaps;
@@ -333,6 +333,7 @@ gst_my_filter_query (GstPad *pad, GstObject * parent, GstQuery * query)
   }
   return ret;
 }
+
 ```
 
 ## 拉模式能力集协商

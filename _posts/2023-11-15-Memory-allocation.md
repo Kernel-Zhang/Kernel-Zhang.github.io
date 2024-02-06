@@ -126,7 +126,7 @@ tags: [gst插件编写, gstreamer, 多媒体]
 
 分配新的`GstBuffer` 后，您可以使用元数据专用 API 为其添加元数据。这意味着您需要链接到定义元数据的头文件，才能使用其 API。
 
-按照惯例，名为`FooBar`的元数据 API 应提供两个方法，即`gst_buffer_add_fooo_bar_meta ()`和`gst_buffer_get_fooo_bar_meta ()` 方法。这两个函数都应返回一个指向包含元数据字段的`FooBarMeta`结构的指针。某些`_add_*_meta ()`函数可能有额外的参数，这些参数通常用于为你配置元数据结构。
+按照惯例，名为`FooBar`的元数据 API 应提供两个方法，即`gst_buffer_add_foo_bar_meta ()`和`gst_buffer_get_foo_bar_meta ()` 方法。这两个函数都应返回一个指向包含元数据字段的`FooBarMeta`结构的指针。某些`_add_*_meta ()`函数可能有额外的参数，这些参数通常用于为你配置元数据结构。
 
 让我们来看看用于指定视频帧裁剪区域的元数据。
 
@@ -199,7 +199,7 @@ GType my_example_meta_api_get_type (void);
   ((MyExampleMeta*)gst_buffer_get_meta((b),MY_EXAMPLE_META_API_TYPE))
 ```
 
-元数据 API 定义包括对包含一个`gint`和一个字符串的结构的定义。结构中的第一个字段必须是`GstMeta`。
+元数据 API 定义包括对包含一个`gint`和一个字符串的结构体定义。结构中的第一个字段必须是`GstMeta`。
 
 我们还定义了一个`my_example_meta_api_get_type ()`函数，用于注册我们的元数据 API 定义，并定义了一个`gst_buffer_get_my_example_meta ()`宏，用于使用我们的新 API 查找并返回元数据。
 

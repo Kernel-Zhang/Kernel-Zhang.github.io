@@ -6,7 +6,7 @@ categories: [gstreamer, 插件编写]
 tags: [gst插件编写, gstreamer, 多媒体]
 ---
 
-通常，您希望在尽可能小的环境中测试新编写的插件。通常，`gst-launch-1.0`是测试插件的第一步。如果没有将插件安装在 GStreamer 可以搜索到的目录中，则需要设置插件路径。 可以将 `GST_PLUGIN_PATH` 设置为包含插件的目录，或者使用命令行选项 --gst-plugin-path 来设置。如果你的插件是基于 gst-plugin 模板开发的，那么看起来就像`gst-launch-1.0 --gst-plugin-path=$HOME/gst-template/gst-plugin/src/.libs TESTPIPELINE`。不过，你通常需要比 gst-launch-1.0 更多的测试功能，比如搜索、事件、交互等。编写自己的小型测试程序是最简单的方法，本节将简要介绍如何编写测试程序。如需完整的应用程序开发指南，请参阅《应用程序开发手册》。
+通常，您希望在尽可能小的环境中测试新编写的插件。通常，`gst-launch-1.0`是测试插件的第一步。如果没有将插件安装在 GStreamer 可以搜索到的目录中，则需要设置插件路径。 可以将 `GST_PLUGIN_PATH` 设置为包含插件的目录，或者使用命令行选项 `--gst-plugin-path` 来设置。如果你的插件是基于 gst-plugin 模板开发的，那么看起来就像`gst-launch-1.0 --gst-plugin-path=$HOME/gst-template/gst-plugin/src/.libs TESTPIPELINE`。不过，你通常需要比 gst-launch-1.0 更多的测试功能，比如搜索、事件、交互等。编写自己的小型测试程序是最简单的方法，本节将简要介绍如何编写测试程序。如需完整的应用程序开发指南，请参阅《应用程序开发手册》。
 
 开始时，需要调用`gst_init ()` 来初始化 GStreamer 核心库。你也可以调用`gst_init_get_option_group()`，它会返回一个指向 GOptionGroup 的指针。然后就可以使用 GOption 来处理初始化，这样就完成了 GStreamer 的初始化。
 
