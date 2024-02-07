@@ -22,6 +22,7 @@ tags: [gst插件编写, gstreamer, 多媒体]
 -   元素绝不能使用其标准输出进行调试（使用`printf ()`或`g_print ()` 等函数）。相反，元素应使用 GStreamer 提供的日志功能，即 `GST_DEBUG（）`、`GST_LOG（）`、`GST_INFO（）`、`GST_WARNING（）`和`GST_ERROR（）`。各种日志级别可在运行时打开或关闭，因此可用于解决出现的问题。您也可以使用`GST_LOG_OBJECT()` 来代替 `GST_LOG()`（比如）打印日志输出的对象。
     
 -   理想情况下，元素应使用自己的调试类别。大多数元素都使用以下代码来实现这一点：
+
 ```c
 GST_DEBUG_CATEGORY_STATIC (myelement_debug);
 #define GST_CAT_DEFAULT myelement_debug
@@ -47,7 +48,7 @@ gst_pad_set_event_func (myelement->srcpad,
     
 这使得调试输出更容易阅读。
     
--   旨在纳入 GStreamer 模块的元素应确保元素名称、结构和函数名称的命名一致。例如，如果元素类型是 GstYellowFooDec，函数前缀应为 `gst_yellow_fo_dec_`，元素应注册为 "yellowfoodec"。在此方案中，单独的词应该是分开的，因此应该是 GstFooDec 和 `gst_fo_dec`，而不是 `GstFoodec` 和 `gst_foodec`。
+-   旨在纳入 GStreamer 模块的元素应确保元素名称、结构和函数名称的命名一致。例如，如果元素类型是 GstYellowFooDec，函数前缀应为 `gst_yellow_foo_dec_`，元素应注册为 "yellowfoodec"。在此方案中，单独的词应该是分开的，因此应该是 GstFooDec 和 `gst_foo_dec`，而不是 `GstFoodec` 和 `gst_foodec`。
     
 
 ## 查询、事件等
