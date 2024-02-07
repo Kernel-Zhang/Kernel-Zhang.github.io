@@ -14,7 +14,7 @@ tags: [gst常见问题, gstreamer, 多媒体]
 $ gst-inspect-1.0 fakesrc
 ```
 
-这会打印出有关该特定元素的大量信息。如果显示 "无此元素或插件"，说明你没有正确安装 GStreamer。请查看[如何获取 GStreamer](../UsingGStreamer.md/)如果出现任何其他失败信息，请提交错误报告。
+这会打印出有关该特定元素的大量信息。如果显示 "无此元素或插件"，说明你没有正确安装 GStreamer。请查看[如何获取 GStreamer](../GettingGStreamer/)如果出现任何其他失败信息，请提交错误报告。
 
 是时候试一试了。首先使用 gst-launch 和两个你应该拥有的插件：fakesrc 和 fakesink。除了传递空缓冲区外，它们什么也不做。在命令行输入：
 
